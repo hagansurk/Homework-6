@@ -56,8 +56,9 @@ print("\n\n***** Problem 2 *****")
 ## The function should invoke the input function upon each element of the input list, and accumulate the return values to a new list.
 ## The function should return the new list of accumulated -- mapped! -- values.
 ## HINT: you should be able to write this in 5 lines of code or fewer! 
-def personal_map():
-    new_list = []
+def personal_map(function,list):
+    return list(map(function,list))
+
 
 
 
@@ -113,7 +114,11 @@ print("\n\n***** Problem 6 *****")
 ## Write code to cast that iterator to a list. Save that list in the variable prod_list.
 
 ## You may add a method to the Student class if you wish in order to do this, but you do not need to. (If you do, make sure you do not create any syntax errors that keep code/tests from running!)
-prod_iter = map(lambda x: x)
+def programming_productive(Student):
+    return (Student.num_programs/Student.years_UM)
+prod_iter = map(programming_productive, programmers)
+prod_list = list(prod_iter)
+
 
 
 ## [PROBLEM 7]
@@ -121,18 +126,23 @@ print("\n\n***** Problem 7 *****")
 # Create a list of tuples wherein each tuple has a student's name and productivity value. Save the list of tuples in a variable called names_and_productivities. To do this, you should use a list comprehension (you may also use the zip function, and you may use any variables you have already created).
 
 ## But be careful that if you use answers from previous problems, you use the LISTs you generated, so that all your tests can still pass and you avoid confusion!
+student_names = list(map(lambda x: x.name, programmers))
+names_and_productivities = list(zip(student_names, prod_list))
 
 
 
 ## [PROBLEM 8]
 print("\n\n***** Problem 8 *****")
 # Use the Python filter function to select the subset of programmers who have names with 5 or more characters. (i.e. ["Albert","Dinesh","Euijin"]) Your result should be an filter object that points to Student instances. Save that filter iterator in a variable called long_names.
-
+def programmer_name(Student):
+    if len(Student.name) >= 5:
+        return Student
+long_names = filter(programmer_name, programmers)
 
 
 ## Then write code to cast the value of long_names to a list and save it in the variable long_names_list. 
 
-
+long_names_list = list(long_names)
 
 ## [PROBLEM 9]
 print("\n\n***** Problem 9 *****")
@@ -140,7 +150,7 @@ print("\n\n***** Problem 9 *****")
 # Use a list comprehension to generate a LIST of just the names of those Student instances whose name is longer than their seniority (i.e., ["Albert", "Mai", "Dinesh", "Euijin"]). Assign it to a variable called names_with_not_too_much_seniority.
 
 ## Note that you can use another list you have already created for this problem.
-
+names_with_not_too_much_seniority = [student.name for student in programmers if len(student.name) > student.years_UM]
 
 
 
