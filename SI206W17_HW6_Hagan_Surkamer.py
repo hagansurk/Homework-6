@@ -56,13 +56,8 @@ print("\n\n***** Problem 2 *****")
 ## The function should invoke the input function upon each element of the input list, and accumulate the return values to a new list.
 ## The function should return the new list of accumulated -- mapped! -- values.
 ## HINT: you should be able to write this in 5 lines of code or fewer! 
-def personal_map(function,list):
+def personal_map(function, list):
     return list(map(function,list))
-
-
-
-
-
 
 ## [PROBLEM 3]
 print("\n\n***** Problem 3 *****")
@@ -170,7 +165,12 @@ print("\n\n***** Problem 10 *****")
 ## We have provided files samplehw6_1.txt and samplehw6_2.txt for your use for this problem, which hopefully you have downloaded, so you can test with those file names! The test below also relies upon these files. Of course, you could also create other files for testing.
 
 # Define readfiles (make sure to close the file reference in the right place)
-
+def readfiles(filename_list):
+    i = '\n'
+    for filen in filename_list:
+        for i in filen:
+            yield i
+        
 
 # Define len_check
 
