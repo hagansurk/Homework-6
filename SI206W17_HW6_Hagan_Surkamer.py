@@ -166,23 +166,27 @@ print("\n\n***** Problem 10 *****")
 
 # Define readfiles (make sure to close the file reference in the right place)
 def readfiles(filename_list):
-    i = '\n'
-    for filen in filename_list:
-        for i in filen:
-            yield i
-        
+    for fil in filename_list:
+        file1 = open(fil, 'r')
+        for lin in file1:
+            yield lin
+        file1.close()
 
 # Define len_check
-
+def len_check(lines):
+    for lin in lines:
+        if len(lin)>40:
+            yield lin
 
 # Define main_filterer
-
+def main_filterer(filename_list):
+    return (len_check(readfiles(filename_list)))
 
 
 ## Uncomment this code to test so you can see easily what results from your code. DO uncomment it. DO NOT delete or change it. (You can add other code above while you work, of course.)
-# provided_file_names = ["samplehw6_1.txt","samplehw6_2.txt"]
-# for ln in main_filterer(provided_file_names):
-#     print(ln.rstrip('\n'), end=" ")
+provided_file_names = ["samplehw6_1.txt","samplehw6_2.txt"]
+for ln in main_filterer(provided_file_names):
+    print(ln.rstrip('\n'), end=" ")
 #####
 
 
